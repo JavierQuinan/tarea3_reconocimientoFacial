@@ -14,7 +14,6 @@ class Usuarios
         return $datos;
         $con->close();
     }
-    /*TODO: Procedimiento para sacar un registro*/
     public function uno($idUsuarios)
     {
         $con = new ClaseConectar();
@@ -29,7 +28,6 @@ class Usuarios
         $con = new ClaseConectar();
         $con = $con->ProcedimientoConectar();
         $cadena = "SELECT * FROM `Usuarios` WHERE `Cedula`='$Cedula'";
-
         $datos = mysqli_query($con, $cadena);
         return $datos;
         $con->close();
@@ -52,7 +50,6 @@ class Usuarios
         $con->close();
     }
 
-    /*TODO: Procedimiento para actualizar */
     public function Actualizar($idUsuarios, $Nombres, $Apellidos, $Correo, $Contrasenia, $idRoles, $Cedula)
     {
         $con = new ClaseConectar();
@@ -65,7 +62,6 @@ class Usuarios
         }
         $con->close();
     }
-    /*TODO: Procedimiento para Eliminar */
     public function Eliminar($idUsuarios)
     {
         $UsRoles = new Usuarios_Roles();
