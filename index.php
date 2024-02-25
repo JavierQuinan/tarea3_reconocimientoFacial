@@ -103,7 +103,7 @@
   <script src="./public/assets/js/main.js"></script>
 
   <!-- Page JS -->
-  <script src="./public/assets/js/index.js"></script>
+  <script src="./views\reconocimientoFacial\recofacial.js"></script>
   <script src="./public/assets/js/face-api.min.js"></script>
 
 </body>
