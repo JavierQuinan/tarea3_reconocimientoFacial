@@ -32,7 +32,15 @@ class Usuarios
         return $datos;
         $con->close();
     }
-    /*TODO: Procedimiento para insertar */
+    public function Descriptor($Cedula)
+    {
+        $con = new ClaseConectar();
+        $con = $con->ProcedimientoConectar();
+        $cadena = "SELECT Descriptor FROM usuarios WHERE cedula = '$Cedula'";
+        $datos = mysqli_query($con, $cadena);
+        return $datos;
+        $con->close();
+    }
     public function Insertar($Nombres, $Apellidos, $Correo, $Contrasenia, $SucursalId, $idRoles, $Cedula)
     {
         $con = new ClaseConectar();
