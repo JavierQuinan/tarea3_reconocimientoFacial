@@ -11,7 +11,6 @@ $().ready(() => {
 var RegistroAsistencia = (e) => {
   e.preventDefault();
   var formulario = new FormData($("#frm")[0]);
-  formulario.append("usuariosId", usuarioId);
   alert("aqui");
   $.ajax({
     url: "controllers/usuario.controllers.php?op=unoconCedula",
@@ -67,45 +66,7 @@ var tiposacceso = () => {
 };
 init();
 
-document.addEventListener("DOMContentLoaded", async (e) => {
-  const video = document.getElementById('video');
-  const MODEL_URL= 'public/models';
 
-  if (navigator.mediaDevices.getUserMedia) {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    video.srcObject = stream;
-    video.onloadedmetadata = function(e) {
-      video.play();
-      onPlay();
-    };
-  } else {
-    console.log("getUserMedia not supported");
-  }
-
-  async function onPlay() {
-    await faceapi.nets.ssdMobilenetv1.loadFromUri(MODEL_URL);
-    await faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL);
-    await faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL);
-
-    const detections = await faceapi.detectSingleFace(video, new faceapi.SsdMobilenetv1Options())
-      .withFaceLandmarks()
-      .withFaceDescriptor();
-
-    if (detections) {
-      const descriptor = detections.descriptor;
-      console.log(descriptor);
-      $.ajax({
-        url: "controllers/usuario.controllers.php?op=identificar",
-        type: "post",
-        data: { descriptor: descriptor },
-        success: function(usuarioId) {
-          // Llamar a la función de registro de asistencia con el ID de usuario detectado
-          RegistroAsistencia(usuarioId);
-        }
-      });
-    }
-  }
-});
 
 
 
